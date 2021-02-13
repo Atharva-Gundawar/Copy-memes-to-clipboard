@@ -15,15 +15,19 @@ def getmemes():
     url = json_response['url']
 
     print(url)
+    urlList= list(url)
+    if urlList[-3:] == "gif":
+        print("found gif")
+        getmemes()
+    else:
+        im = Image.open(requests.get(json_response['url'], stream=True).raw)
 
-    im = Image.open(requests.get(json_response['url'], stream=True).raw)
+        output = BytesIO()
+        im.convert("RGB").save(output, "BMP")
+        data = output.getvalue()[14:]
+        output.close()
 
-    output = BytesIO()
-    im.convert("RGB").save(output, "BMP")
-    data = output.getvalue()[14:]
-    output.close()
-
-    send_to_clipboard(win32clipboard.CF_DIB, data)
+        send_to_clipboard(win32clipboard.CF_DIB, data)
 
 
 def send_to_clipboard(clip_type, data):
