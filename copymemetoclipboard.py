@@ -6,8 +6,7 @@ from io import BytesIO
 import win32clipboard
 from PIL import Image
 
-def getmemes():
-    genre = "memes"
+def getmemes(genre = "memes"):
     url = "https://meme-api.herokuapp.com/gimme/" + genre
 
     r = requests.get(url)
