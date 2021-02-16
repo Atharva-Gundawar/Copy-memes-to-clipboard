@@ -21,16 +21,3 @@ def getmemes(genre = "memes"):
     else:
         im = Image.open(requests.get(json_response['url'], stream=True).raw)
         im.show()
-
-
-
-def send_to_clipboard(clip_type, data):
-    win32clipboard.OpenClipboard()
-    win32clipboard.EmptyClipboard()
-    win32clipboard.SetClipboardData(clip_type, data)
-    win32clipboard.CloseClipboard()
-    print("copied")
-
-
-# if __name__ == "__main__":
-#     main()
