@@ -7,7 +7,7 @@ def on_press(key):
     keylist = list(str(key))
     if keylist[2] == "r":
         print("this is meme shortcut")
-        getmemes("nsfw")
+        getmemes("meme")
     # if keylist[2] == "x" and keylist[3] == "0" and keylist[4] == "2" :  
     #     print(key)
     #     sys.exit("Byeee")
