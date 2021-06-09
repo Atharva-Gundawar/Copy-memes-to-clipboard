@@ -1,0 +1,5 @@
+time==1.0.0
+keyboard==0.13.5
+requests==2.23.0
+helper==2.5.0
+PIL==1.1.6
