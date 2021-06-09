@@ -1,22 +1,14 @@
-from pynput.keyboard import Key, Listener
-import sys
-from copymemetoclipboard import getmemes
+from helper import getPosts
+import keyboard
+import time
 
-def on_press(key):
-    # print('{0} pressed'.format(key))
-    keylist = list(str(key))
-    if keylist[2] == "r":
-        print("this is meme shortcut")
-        getmemes("meme")
-    # if keylist[2] == "x" and keylist[3] == "0" and keylist[4] == "2" :  
-    #     print(key)
-    #     sys.exit("Byeee")
-def on_release(key):
-    # print('{0} release'.format(key))
-    if key == Key.esc:
-        # Stop listener
-        return False
+getMemeShortcut = "ctrl + m"
+endScript = "ctrl + c"
 
-# Collect events until released
-with Listener(on_press=on_press,on_release=on_release) as listener:
-    listener.join()
+while True:
+    if keyboard.is_pressed(getMemeShortcut):
+        getPosts("meme")
+        time.sleep(0.5)
+    elif keyboard.is_pressed(endScript):
+        break
+    time.sleep(0.01)
