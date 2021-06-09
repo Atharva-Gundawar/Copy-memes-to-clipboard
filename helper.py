@@ -1,7 +1,11 @@
 from PIL import Image
+import logging
 import requests 
 import json
 import os 
+
+logging.basicConfig(filename='posts.log',format='%(message)s',
+                    level=logging.ERROR)
 
 def getPosts(genre = "memes"):
 
@@ -16,5 +20,8 @@ def getPosts(genre = "memes"):
     if urlList[-3:] == "gif":
         pass
     else:
-        im = Image.open(requests.get(json_response['url'], stream=True).raw)
+        title = json_response['title']
+        url = json_response['url']
+        im = Image.open(requests.get(url, stream=True).raw)
+        logging.error('%s => %s', title, url)
         im.show()
